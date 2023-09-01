@@ -1,6 +1,6 @@
 # Markdown Folder Structure for VS Code
 
-![Banner o Logo de la Extensión]('.assets/screen01.png')
+<!-- ![Banner o Logo de la Extensión]('.assets/screen01.png') -->
 
 Una extensión de Visual Studio Code que permite a los usuarios generar una representación visual en Markdown de la estructura de carpetas y archivos seleccionados.
 
@@ -19,11 +19,11 @@ Una extensión de Visual Studio Code que permite a los usuarios generar una repr
 
 ## Capturas de Pantalla
 
-![Uso Básico]('.assets/screen01.png')
-_Descripción de la imagen_
+<!-- ![Uso Básico]('.assets/screen01.png') -->
+<!-- _Descripción de la imagen_ -->
 
-![Otra Funcionalidad]('.assets/screen02.png')
-_Descripción de la imagen_
+<!-- ![Otra Funcionalidad]('.assets/screen02.png') -->
+<!-- _Descripción de la imagen_ -->
 
 ## Instalación
 
