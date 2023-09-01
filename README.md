@@ -1,6 +1,6 @@
 # Markdown Folder Structure for VS Code
 
-![Banner o Logo de la Extensión](ruta/a/tu/imagen/banner.png)
+![Banner o Logo de la Extensión]('.assets/screen01.png')
 
 Una extensión de Visual Studio Code que permite a los usuarios generar una representación visual en Markdown de la estructura de carpetas y archivos seleccionados.
 

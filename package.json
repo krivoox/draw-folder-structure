@@ -3,6 +3,10 @@
   "displayName": "MarkdownFolderStructure",
   "description": "",
   "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tuUsuario/tuRepositorio.git"
+  },
   "engines": {
     "vscode": "^1.81.0"
   },
