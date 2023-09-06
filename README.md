@@ -1,41 +1,41 @@
 # Markdown Folder Structure for VS Code
 
-<!-- ![Banner o Logo de la Extensión]('.assets/screen01.png') -->
+![Extension Banner or Logo](./src/assets/drawstructurelogo.png)
 
-Una extensión de Visual Studio Code que permite a los usuarios generar una representación visual en Markdown de la estructura de carpetas y archivos seleccionados.
+A Visual Studio Code extension that allows users to generate a visual representation in Markdown of the selected folder and file structure.
 
-## Características
+## Features
 
-- **Generación Rápida**: Con un solo clic, obtén una representación en Markdown de tu estructura de carpetas.
-- **Formato Atractivo**: La estructura generada utiliza caracteres Unicode para una visualización clara y estética.
-- **Integración Perfecta**: Se integra directamente en el menú contextual del explorador de archivos de VS Code.
+- **Quick Generation**: With a single click, get a Markdown representation of your folder structure.
+- **Attractive Format**: The generated structure uses Unicode characters for a clear and aesthetic display.
+- **Seamless Integration**: Integrates directly into the VS Code file explorer context menu.
 
-## Uso
+## Usage
 
-1. Navega al explorador de archivos en VS Code.
-2. Haz clic derecho en una carpeta o archivo.
-3. Selecciona "Generar estructura en Markdown" del menú contextual.
-4. ¡Disfruta de tu estructura de carpetas en formato Markdown!
+1. Navigate to the file explorer in VS Code.
+2. Right-click on a folder or file.
+3. Select "Generate structure in Markdown" from the context menu.
+4. Enjoy your folder structure in Markdown format!
 
-## Capturas de Pantalla
+## Screenshots
 
-<!-- ![Uso Básico]('.assets/screen01.png') -->
-<!-- _Descripción de la imagen_ -->
+![Basic Usage](./src/assets/screen01.png)
+_Click on the option "Generate Markdown structure"._
 
-<!-- ![Otra Funcionalidad]('.assets/screen02.png') -->
-<!-- _Descripción de la imagen_ -->
+![Another Feature](./src/assets/screen02.png)
+_A file with the drawing of the structure will be generated._
 
-## Instalación
+## Installation
 
-1. Abre Visual Studio Code.
-2. Ve a la vista de Extensiones o presiona `Ctrl+Shift+X`.
-3. Busca "Markdown Folder Structure".
-4. Instala y ¡listo!
+1. Open Visual Studio Code.
+2. Go to the Extensions view or press `Ctrl+Shift+X`.
+3. Search for "Markdown Folder Structure".
+4. Install and you're done!
 
-## Contribuciones
+## Contributions
 
-Las contribuciones son bienvenidas. Si encuentras algún problema o tienes una sugerencia, por favor, abre un issue en el repositorio de GitHub.
+Contributions are welcome. If you find any issues or have a suggestion, please open an issue on the GitHub repository.
 
-## Licencia
+## License
 
-[MIT](LICENSE)
+[MIT](https://opensource.org/licenses/MIT)

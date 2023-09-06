@@ -34,7 +34,7 @@ function generateStructure(
   depth: number = 0,
   isFile: boolean = false
 ): string {
-  const indent = '  '.repeat(depth); // 4 espacios para simular una tabulación
+  const indent = '  '.repeat(depth);
   let structure = '';
 
   if (isFile) {

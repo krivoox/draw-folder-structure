@@ -1,15 +1,17 @@
 {
-  "name": "markdownfolderstructure",
-  "displayName": "MarkdownFolderStructure",
+  "name": "drawfolderstructure",
+  "displayName": "Draw Folder Structure",
   "description": "",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tuUsuario/tuRepositorio.git"
+    "url": "https://github.com/krivoox/draw-folder-structure"
   },
+  "icon": "src/assets/drawstructurelogo.png",
   "engines": {
     "vscode": "^1.81.0"
   },
+  "publisher": "jmkrivocapich",
   "categories": [
     "Other"
   ],
@@ -19,7 +21,7 @@
     "commands": [
       {
         "command": "extension.generateMarkdownStructure",
-        "title": "Generar estructura en Markdown"
+        "title": "Generate Markdown structure"
       }
     ],
     "menus": {
