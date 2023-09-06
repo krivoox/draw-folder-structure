@@ -35,8 +35,8 @@ _A file with the drawing of the structure will be generated._
 
 ## Contributions
 
-Contributions are welcome. If you find any issues or have a suggestion, please open an issue on the GitHub repository.
+Contributions are welcome. If you encounter any problems or have any suggestions, please open an issue in the GitHub repository. We also invite you to read [How to contribute](./CONTRIBUTING.md)
 
 ## License
 
-[MIT](https://opensource.org/licenses/MIT)
+[MIT](./LICENSE.md)
