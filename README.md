@@ -3,6 +3,7 @@
 ![Extension Banner or Logo](./src/assets/drawstructurelogo.png)
 
 A Visual Studio Code extension that allows users to generate a visual representation in Markdown of the selected folder and file structure.
+This extension works with vscode version 1.81.0 or higher
 
 ## Features
 
