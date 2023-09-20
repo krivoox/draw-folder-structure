@@ -31,6 +31,22 @@
           "when": "resourceScheme == file"
         }
       ]
+    },
+    "configuration": {
+      "title": "Draw Folder Structure",
+      "properties": {
+        "drawfolderstructure.exclude": {
+          "type": "array",
+          "default": [
+            "node_modules",
+            ".git",
+            "dist",
+            ".next",
+            "out"
+          ],
+          "description": "File and folder patterns to exclude when generating the Markdown structure."
+        }
+      }
     }
   },
   "scripts": {

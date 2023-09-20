@@ -11,9 +11,14 @@ export function activate(context: vscode.ExtensionContext) {
       const stats = fs.statSync(folderPath);
       let markdownStructure = '';
 
+      const excludePatterns: string[] =
+        vscode.workspace
+          .getConfiguration('drawfolderstructure')
+          .get('exclude') || [];
+
       if (stats.isDirectory()) {
         markdownStructure += `└── ${itemName}\n`;
-        markdownStructure += generateStructure(folderPath, 1);
+        markdownStructure += generateStructure(folderPath, 1, excludePatterns);
       } else {
         markdownStructure = `├── ${itemName}\n`;
       }
@@ -32,28 +37,33 @@ export function activate(context: vscode.ExtensionContext) {
 function generateStructure(
   dir: string,
   depth: number = 0,
-  isFile: boolean = false
+  excludePatterns: string[] = []
 ): string {
   const indent = '  '.repeat(depth);
   let structure = '';
 
-  if (isFile) {
-    return `${indent}├── ${path.basename(dir)}\n`;
-  }
+  const items = fs
+    .readdirSync(dir)
+    .filter((item) => !shouldExclude(item, excludePatterns));
+  items.forEach((item, index) => {
+    const isLastItem = index === items.length - 1;
+    const prefix = isLastItem ? '└── ' : '├── ';
 
-  const items = fs.readdirSync(dir);
-  for (const item of items) {
     const itemPath = path.join(dir, item);
     const stats = fs.statSync(itemPath);
     if (stats.isDirectory()) {
-      structure += `${indent}└── ${item}\n`;
-      structure += generateStructure(itemPath, depth + 1);
+      structure += `${indent}${prefix}${item}\n`;
+      structure += generateStructure(itemPath, depth + 1, excludePatterns);
     } else {
-      structure += generateStructure(itemPath, depth + 1, true);
+      structure += `${indent}${prefix}${item}\n`;
     }
-  }
+  });
 
   return structure;
+}
+
+function shouldExclude(name: string, patterns: string[]): boolean {
+  return patterns.some((pattern) => name.includes(pattern));
 }
 
 export function deactivate() {}
