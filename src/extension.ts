@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as path from 'path';
+import { generateStructure } from './functions/generate-structure';
 
 export function activate(context: vscode.ExtensionContext) {
   let disposable = vscode.commands.registerCommand(
@@ -32,38 +33,6 @@ export function activate(context: vscode.ExtensionContext) {
   );
 
   context.subscriptions.push(disposable);
-}
-
-function generateStructure(
-  dir: string,
-  depth: number = 0,
-  excludePatterns: string[] = []
-): string {
-  const indent = '  '.repeat(depth);
-  let structure = '';
-
-  const items = fs
-    .readdirSync(dir)
-    .filter((item) => !shouldExclude(item, excludePatterns));
-  items.forEach((item, index) => {
-    const isLastItem = index === items.length - 1;
-    const prefix = isLastItem ? '└── ' : '├── ';
-
-    const itemPath = path.join(dir, item);
-    const stats = fs.statSync(itemPath);
-    if (stats.isDirectory()) {
-      structure += `${indent}${prefix}${item}\n`;
-      structure += generateStructure(itemPath, depth + 1, excludePatterns);
-    } else {
-      structure += `${indent}${prefix}${item}\n`;
-    }
-  });
-
-  return structure;
-}
-
-function shouldExclude(name: string, patterns: string[]): boolean {
-  return patterns.some((pattern) => name.includes(pattern));
 }
 
 export function deactivate() {}
