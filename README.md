@@ -18,12 +18,22 @@ This extension works with vscode version 1.81.0 or higher
 3. Select "Generate structure in Markdown" from the context menu.
 4. Enjoy your folder structure in Markdown format!
 
+## Customization
+
+Customize the folders you want to exclude from your structures.
+For example: "node_module" (Excluded by default).
+Just add in your **settings.json** file the line **"drawfolderstructure.exclude"** and it will show you the default excluded folders and files.
+You can modify it to your liking!
+![Custom Setting](./src/assets/screen03.png)
+
 ## Screenshots
 
 ![Basic Usage](./src/assets/screen01.png)
+
 _Click on the option "Generate Markdown structure"._
 
 ![Another Feature](./src/assets/screen02.png)
+
 _A file with the drawing of the structure will be generated._
 
 ## Installation
@@ -36,6 +46,12 @@ _A file with the drawing of the structure will be generated._
 ## Contributions
 
 Contributions are welcome. If you encounter any problems or have any suggestions, please open an issue in the GitHub repository. We also invite you to read [How to contribute](./CONTRIBUTING.md)
+
+## Made by
+
+**Krivoox**
+[Follow me on X](https://twitter.com/JKrivocapich)
+[My linkedin](https://www.linkedin.com/in/juan-manuel-krivocapich/)
 
 ## License
 
