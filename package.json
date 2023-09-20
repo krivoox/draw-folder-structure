@@ -2,7 +2,7 @@
   "name": "drawfolderstructure",
   "displayName": "Draw Folder Structure",
   "description": "",
-  "version": "0.1.5",
+  "version": "1.0.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/krivoox/draw-folder-structure"
@@ -31,6 +31,22 @@
           "when": "resourceScheme == file"
         }
       ]
+    },
+    "configuration": {
+      "title": "Draw Folder Structure",
+      "properties": {
+        "drawfolderstructure.exclude": {
+          "type": "array",
+          "default": [
+            "node_modules",
+            ".git",
+            "dist",
+            ".next",
+            "out"
+          ],
+          "description": "File and folder patterns to exclude when generating the Markdown structure."
+        }
+      }
     }
   },
   "scripts": {

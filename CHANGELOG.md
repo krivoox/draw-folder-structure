@@ -2,9 +2,14 @@
 
 All notable changes to the "Draw Folder Structure" extension will be documented in this file.
 
-## [Unreleased]
+## [1.0.0] - 2023-09-20
 
-- Initial release
+### Added
+
+- the customization option is added so that the user can exclude the files and folders he/she wants.
+- add tests
+- update semantic version for production
+- the project structure is improved
 
 ## [0.0.4] - 2023-09-06
 
@@ -17,3 +22,7 @@ All notable changes to the "Draw Folder Structure" extension will be documented 
 ### Added
 
 - Fix the images and logo in readme.md and include MIT license
+
+## [Unreleased]
+
+- Initial release
