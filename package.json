@@ -22,12 +22,26 @@
       {
         "command": "extension.generateMarkdownStructure",
         "title": "Generate Markdown structure"
+      },
+      {
+        "command": "extension.linkWithUrl",
+        "title": "Link to URL"
+      },
+      {
+        "command": "extension.openUrl",
+        "title": "Abrir URL"
       }
     ],
     "menus": {
       "explorer/context": [
         {
           "command": "extension.generateMarkdownStructure",
+          "when": "resourceScheme == file"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "extension.linkWithUrl",
           "when": "resourceScheme == file"
         }
       ]
