@@ -35,7 +35,7 @@
     "configuration": {
       "title": "Draw Folder Structure",
       "properties": {
-        "drawfolderstructure.exclude": {
+        "draw.folder.structure.exclude": {
           "type": "array",
           "default": [
             "node_modules",
@@ -45,6 +45,17 @@
             "out"
           ],
           "description": "File and folder patterns to exclude when generating the Markdown structure."
+        },
+        "draw.folder.structure.style": {
+          "type": "string",
+          "default": "dashes",
+          "enum": [
+            "dashes",
+            "dots",
+            "emojis",
+            "arrows"
+          ],
+          "description": "Estilo de dibujo para la estructura de carpetas."
         }
       }
     }

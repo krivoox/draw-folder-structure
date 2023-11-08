@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as path from 'path';
+import { Style, getPrefix } from './functions/get-prefix';
 import { generateStructure } from './functions/generate-structure';
 
 export function activate(context: vscode.ExtensionContext) {
@@ -14,14 +15,24 @@ export function activate(context: vscode.ExtensionContext) {
 
       const excludePatterns: string[] =
         vscode.workspace
-          .getConfiguration('drawfolderstructure')
+          .getConfiguration('draw.folder.structure')
           .get('exclude') || [];
 
+      const style: Style =
+        vscode.workspace
+          .getConfiguration('draw.folder.structure')
+          .get('style') || Style.dashes;
+
       if (stats.isDirectory()) {
-        markdownStructure += `└── ${itemName}\n`;
-        markdownStructure += generateStructure(folderPath, 1, excludePatterns);
+        markdownStructure += getPrefix(0, style) + itemName + '\n';
+        markdownStructure += generateStructure(
+          folderPath,
+          1,
+          excludePatterns,
+          style
+        );
       } else {
-        markdownStructure = `├── ${itemName}\n`;
+        markdownStructure = getPrefix(0, style, true) + itemName + '\n';
       }
 
       vscode.workspace

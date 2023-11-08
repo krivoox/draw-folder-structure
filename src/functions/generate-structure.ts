@@ -1,31 +1,36 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { shouldExclude } from './should-exclude';
+import { Style, getPrefix } from './get-prefix';
 
 export function generateStructure(
-  dir: string,
-  depth: number = 0,
-  excludePatterns: string[] = []
+  folderPath: string,
+  depth: number,
+  excludePatterns: string[],
+  style: Style
 ): string {
-  const indent = '  '.repeat(depth);
   let structure = '';
+  const items = fs.readdirSync(folderPath);
 
-  const items = fs
-    .readdirSync(dir)
-    .filter((item) => !shouldExclude(item, excludePatterns));
-  items.forEach((item, index) => {
-    const isLastItem = index === items.length - 1;
-    const prefix = isLastItem ? '└── ' : '├── ';
+  for (const item of items) {
+    const fullPath = path.join(folderPath, item);
+    const stats = fs.statSync(fullPath);
+    const isFile = stats.isFile();
+    const isExcluded = excludePatterns.some((pattern) =>
+      new RegExp(pattern).test(item)
+    );
 
-    const itemPath = path.join(dir, item);
-    const stats = fs.statSync(itemPath);
-    if (stats.isDirectory()) {
-      structure += `${indent}${prefix}${item}\n`;
-      structure += generateStructure(itemPath, depth + 1, excludePatterns);
-    } else {
-      structure += `${indent}${prefix}${item}\n`;
+    if (!isExcluded) {
+      structure += getPrefix(depth, style, isFile) + item + '\n';
+      if (stats.isDirectory()) {
+        structure += generateStructure(
+          fullPath,
+          depth + 1,
+          excludePatterns,
+          style
+        );
+      }
     }
-  });
+  }
 
   return structure;
 }
