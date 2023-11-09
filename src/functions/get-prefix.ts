@@ -1,9 +1,4 @@
-export enum Style {
-  dashes = 'dashes',
-  dots = 'dots',
-  emojis = 'emojis',
-  arrows = 'arrows',
-}
+import { Style } from '../types/style';
 
 export type GetPrefixFunction = (
   depth: number,
@@ -13,18 +8,49 @@ export type GetPrefixFunction = (
 
 export const getPrefix: GetPrefixFunction = (depth, style, isFile = false) => {
   const repeatStr = '  '.repeat(depth);
-  const filePrefixes: Record<Style, string> = {
-    [Style.dashes]: `${repeatStr}├── `,
-    [Style.dots]: `${repeatStr}• `,
-    [Style.emojis]: `${repeatStr}└──📄 `,
-    [Style.arrows]: `${repeatStr}➤ `,
-  };
 
   const folderPrefixes: Record<Style, string> = {
-    [Style.dashes]: `${repeatStr}└── `,
-    [Style.dots]: `${repeatStr}• `,
-    [Style.emojis]: `${repeatStr}└──📁 `,
-    [Style.arrows]: `${repeatStr}➤ `,
+    [Style.ClassicDashes]: `${repeatStr}└── `,
+    [Style.MinimalistDots]: `${repeatStr} • `,
+    [Style.EmojiFun]: `${repeatStr}📁 `,
+    [Style.EmojiMinimalist]: `${repeatStr}📁 `,
+    [Style.Arrows]: `${repeatStr}➜ `,
+    [Style.NestedCircles]: `${repeatStr}◉ `,
+    [Style.BoldBlocks]: `${repeatStr}■ `,
+    [Style.SlashSeparators]: `${repeatStr}/ `,
+    [Style.ChevronIndicators]: `${repeatStr}» `,
+    [Style.DotDashMix]: `${repeatStr}• `,
+    [Style.Triangles]: `${repeatStr}▶ `,
+    [Style.Zigzag]: `${repeatStr}↳ `,
+    [Style.PipesAndHyphens]: `${repeatStr}|- `,
+    [Style.NestedSquares]: `${repeatStr}■ `,
+    [Style.CirclesAndLines]: `${repeatStr}◯ `,
+    [Style.SparklesDesing]: `${repeatStr}📁✨ `,
+    [Style.TrailDesign]: `${repeatStr}👣📁 `,
+    [Style.FloralDesign]: `${repeatStr}🌸📁 `,
+    [Style.GalacticDesign]: `${repeatStr}🌌📁 `,
+  };
+
+  const filePrefixes: Record<Style, string> = {
+    [Style.ClassicDashes]: `${repeatStr}├── `,
+    [Style.MinimalistDots]: `${repeatStr}• `,
+    [Style.EmojiFun]: `${repeatStr}📄 `,
+    [Style.EmojiMinimalist]: `${repeatStr}─ `,
+    [Style.Arrows]: `${repeatStr}➜ `,
+    [Style.NestedCircles]: `${repeatStr}○ `,
+    [Style.BoldBlocks]: `${repeatStr}■ `,
+    [Style.SlashSeparators]: `${repeatStr}/ `,
+    [Style.ChevronIndicators]: `${repeatStr}» `,
+    [Style.DotDashMix]: `${repeatStr}- `,
+    [Style.Triangles]: `${repeatStr}▶ `,
+    [Style.Zigzag]: `${repeatStr}↳ `,
+    [Style.PipesAndHyphens]: `${repeatStr}|- `,
+    [Style.NestedSquares]: `${repeatStr}□ `,
+    [Style.CirclesAndLines]: `${repeatStr}─ `,
+    [Style.SparklesDesing]: `${repeatStr}✨ `,
+    [Style.TrailDesign]: `${repeatStr}👣📄 `,
+    [Style.FloralDesign]: `${repeatStr}🌸📄 `,
+    [Style.GalacticDesign]: `${repeatStr}🌌📄 `,
   };
 
   return isFile ? filePrefixes[style] : folderPrefixes[style];

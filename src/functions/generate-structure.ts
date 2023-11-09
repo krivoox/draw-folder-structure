@@ -1,6 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { Style, getPrefix } from './get-prefix';
+import { getPrefix } from './get-prefix';
+import { Style } from '../types/style';
 
 export function generateStructure(
   folderPath: string,

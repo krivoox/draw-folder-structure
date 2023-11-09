@@ -48,14 +48,29 @@
         },
         "draw.folder.structure.style": {
           "type": "string",
-          "default": "dashes",
+          "default": "ClassicDashes",
           "enum": [
-            "dashes",
-            "dots",
-            "emojis",
-            "arrows"
+            "ClassicDashes",
+            "MinimalistDots",
+            "EmojiFun",
+            "EmojiMinimalist",
+            "Arrows",
+            "NestedCircles",
+            "BoldBlocks",
+            "SlashSeparators",
+            "ChevronIndicators",
+            "DotDashMix",
+            "Triangles",
+            "Zigzag",
+            "PipesAndHyphens",
+            "NestedSquares",
+            "CirclesAndLines",
+            "SparklesDesing",
+            "TrailDesign",
+            "FloralDesign",
+            "GalacticDesign"
           ],
-          "description": "Estilo de dibujo para la estructura de carpetas."
+          "description": "Drawing style for folder structure."
         }
       }
     }
