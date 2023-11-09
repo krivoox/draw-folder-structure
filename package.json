@@ -1,8 +1,8 @@
 {
   "name": "drawfolderstructure",
   "displayName": "Draw Folder Structure",
-  "description": "",
-  "version": "1.0.0",
+  "description": "Generate markdown representations of your folder and file structure",
+  "version": "1.1.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/krivoox/draw-folder-structure"
@@ -11,7 +11,10 @@
   "engines": {
     "vscode": "^1.81.0"
   },
-  "publisher": "jmkrivocapich",
+  "publisher": "jkrivoox",
+  "author": {
+    "name": "JKrivoox"
+  },
   "categories": [
     "Other"
   ],
@@ -48,14 +51,30 @@
         },
         "draw.folder.structure.style": {
           "type": "string",
-          "default": "dashes",
+          "default": "ClassicDashes",
           "enum": [
-            "dashes",
-            "dots",
-            "emojis",
-            "arrows"
+            "ClassicDashes",
+            "MinimalistDots",
+            "EmojiFun",
+            "EmojiMinimalist",
+            "EmojiDashes",
+            "Arrows",
+            "NestedCircles",
+            "BoldBlocks",
+            "SlashSeparators",
+            "ChevronIndicators",
+            "DotDashMix",
+            "Triangles",
+            "Zigzag",
+            "PipesAndHyphens",
+            "NestedSquares",
+            "CirclesAndLines",
+            "SparklesDesing",
+            "TrailDesign",
+            "FloralDesign",
+            "GalacticDesign"
           ],
-          "description": "Estilo de dibujo para la estructura de carpetas."
+          "description": "Drawing style for folder structure."
         }
       }
     }

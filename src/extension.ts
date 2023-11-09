@@ -1,8 +1,9 @@
 import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as path from 'path';
-import { Style, getPrefix } from './functions/get-prefix';
+import { getPrefix } from './functions/get-prefix';
 import { generateStructure } from './functions/generate-structure';
+import { Style } from './types/style';
 
 export function activate(context: vscode.ExtensionContext) {
   let disposable = vscode.commands.registerCommand(
@@ -21,7 +22,7 @@ export function activate(context: vscode.ExtensionContext) {
       const style: Style =
         vscode.workspace
           .getConfiguration('draw.folder.structure')
-          .get('style') || Style.dashes;
+          .get('style') || Style.ClassicDashes;
 
       if (stats.isDirectory()) {
         markdownStructure += getPrefix(0, style) + itemName + '\n';

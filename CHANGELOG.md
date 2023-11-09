@@ -2,6 +2,12 @@
 
 All notable changes to the "Draw Folder Structure" extension will be documented in this file.
 
+## [1.1.0] - 2023-11-09
+
+### Added
+
+- I add new functionality to have more designs
+
 ## [1.0.1] - 2023-09-20
 
 ### Added

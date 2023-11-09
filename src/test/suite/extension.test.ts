@@ -2,21 +2,40 @@ import * as assert from 'assert';
 import * as path from 'path';
 import { generateStructure } from '../../functions/generate-structure';
 import { shouldExclude } from '../../functions/should-exclude';
+import { Style } from '../../types/style';
 
 suite('Extension Test Suite', () => {
-  test('generateStructure should return correct structure', () => {
+  test('generateStructure should return correct structure for different styles', () => {
     const testFolderPath = path.resolve(
       __dirname,
       '../../../src/test/suite/testFolder'
     );
     const exclude = ['.git'];
-    const structure = generateStructure(testFolderPath, 0, exclude);
-    const expectedStructure = `├── README.md
-└── src
-  ├── app.ts
-  └── index.ts
-`;
 
+    let structure = generateStructure(
+      testFolderPath,
+      0,
+      exclude,
+      Style.ClassicDashes
+    );
+    let expectedStructure = `└── README.md
+└── src
+    └── app.ts
+    └── index.ts
+`;
+    assert.strictEqual(structure, expectedStructure);
+
+    structure = generateStructure(
+      testFolderPath,
+      0,
+      exclude,
+      Style.MinimalistDots
+    );
+    expectedStructure = `• README.md
+ • src
+    • app.ts
+    • index.ts
+`;
     assert.strictEqual(structure, expectedStructure);
   });
 
