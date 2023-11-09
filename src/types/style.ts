@@ -8,6 +8,7 @@ export enum Style {
   MinimalistDots = 'MinimalistDots',
   EmojiFun = 'EmojiFun',
   EmojiMinimalist = 'EmojiMinimalist',
+  EmojiDashes = 'EmojiDashes',
   Arrows = 'Arrows',
   NestedCircles = 'NestedCircles',
   BoldBlocks = 'BoldBlocks',

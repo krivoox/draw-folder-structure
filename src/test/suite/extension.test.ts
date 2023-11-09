@@ -18,10 +18,10 @@ suite('Extension Test Suite', () => {
       exclude,
       Style.ClassicDashes
     );
-    let expectedStructure = `├── README.md
+    let expectedStructure = `└── README.md
 └── src
-  ├── app.ts
-  ├── index.ts
+    └── app.ts
+    └── index.ts
 `;
     assert.strictEqual(structure, expectedStructure);
 
@@ -33,8 +33,8 @@ suite('Extension Test Suite', () => {
     );
     expectedStructure = `• README.md
  • src
-  • app.ts
-  • index.ts
+    • app.ts
+    • index.ts
 `;
     assert.strictEqual(structure, expectedStructure);
   });
