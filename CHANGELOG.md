@@ -2,6 +2,17 @@
 
 All notable changes to the "Draw Folder Structure" extension will be documented in this file.
 
+## [1.2.0] - 2023-11-10
+
+### Added
+
+Added automatic copy and notification functionality
+
+- Generated folder structure content is now automatically wrapped in backticks for proper Markdown code formatting.
+- After generating the structure, the content is automatically copied to the clipboard.
+- A notification is displayed to the user to confirm that the folder structure has been copied to the clipboard.
+- These changes improve the usability of the extension, allowing users to quickly paste the structure into their Markdown files without additional steps.
+
 ## [1.1.0] - 2023-11-09
 
 ### Added

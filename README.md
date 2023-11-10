@@ -2,14 +2,16 @@
 
 ![Extension Banner or Logo](./src/assets/drawstructurelogo.png)
 
-A Visual Studio Code extension that allows users to generate a visual representation in Markdown of the selected folder and file structure.
+A Visual Studio Code extension designed to visually represent your project's folder and file structure in Markdown format. Ideal for documentation and overview purposes, this tool simplifies the process of sharing and understanding project structures.
 This extension works with vscode version 1.81.0 or higher
 
-## Features
+## Key Features
 
-- **Quick Generation**: With a single click, get a Markdown representation of your folder structure.
-- **Attractive Format**: Choose from many designs! The generated structure uses Unicode characters for a clear and aesthetic display.
-- **Seamless Integration**: Integrates directly into the VS Code file explorer context menu.
+- **Quick and Easy Visualization**: Instantly generate a Markdown representation of your folder structure with a single click.
+- **Customizable Designs**: Choose from a variety of formats for your structure representation.
+- **Automatic Formatting**: Newly added automatic backticks wrapping for proper Markdown code formatting.
+- **Clipboard Integration**: Automatically copies the generated structure to the clipboard with user notification for easy pasting.
+- **Enhanced Usability**: Designed for convenience, making folder structure sharing effortless.
 
 ## Usage
 
@@ -42,9 +44,9 @@ You can modify it to your liking!
 
 #### Choose the design you like best
 
-Choose from a lot of predefined designs we have to offer. By default we use "ClassicDashes".
+Choose from a lot of predefined designs we have to offer. By default we use "EmojiDashes".
 
-list of styles:
+#####list of styles:
 
 - ClassicDashes
 - SparklesDesing
@@ -52,6 +54,7 @@ list of styles:
 - FloralDesign
 - GalacticDesign
 - MinimalistDots
+- EmojiDashes
 - EmojiFun
 - EmojiMinimalist
 - Arrows
@@ -68,14 +71,19 @@ list of styles:
 
 ![Custom Setting](./src/assets/cap-style-screen.gif)
 
-## Installation
+## Installation and Usage
 
-1. Open Visual Studio Code.
-2. Go to the Extensions view or press `Ctrl+Shift+X`.
-3. Search for "Markdown Folder Structure".
-4. Install and you're done!
+1. Install the extension via Visual Studio Code Marketplace.
+2. Right-click on the desired folder in your VS Code file explorer.
+3. Select 'Generate Markdown Structure' from the context menu.
+4. The Markdown representation of the folder structure is automatically copied to your clipboard.
+5. Paste it into your Markdown file or documentation as needed.
 
-## Contributions
+## Support and Contribution
+
+For support queries or to contribute to this project, please visit our GitHub repository or contact us at [jm.krivocapich@gmail.com]('').
+
+#### Contributions
 
 Contributions are welcome. If you encounter any problems or have any suggestions, please open an issue in the GitHub repository. We also invite you to read [How to contribute](./CONTRIBUTING.md)
 
