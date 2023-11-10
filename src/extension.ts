@@ -22,7 +22,7 @@ export function activate(context: vscode.ExtensionContext) {
       const style: Style =
         vscode.workspace
           .getConfiguration('draw.folder.structure')
-          .get('style') || Style.ClassicDashes;
+          .get('style') || Style.EmojiDashes;
 
       if (stats.isDirectory()) {
         markdownStructure += getPrefix(0, style) + itemName + '\n';
@@ -35,6 +35,15 @@ export function activate(context: vscode.ExtensionContext) {
       } else {
         markdownStructure = getPrefix(0, style, true) + itemName + '\n';
       }
+
+      markdownStructure = '```\n' + markdownStructure + '```';
+
+      vscode.env.clipboard.writeText(markdownStructure).then(() => {
+        // Muestra una notificación
+        vscode.window.showInformationMessage(
+          'Markdown structure copied to clipboard!'
+        );
+      });
 
       vscode.workspace
         .openTextDocument({ content: markdownStructure, language: 'markdown' })
