@@ -7,26 +7,6 @@ This extension works with vscode version 1.81.0 or higher
 
 ## Features
 
-```
-└── 📁src
-    └── 📁[components](./src/components/)
-        └── [navbar.tsx](./src/components/navbar.tsx)
-    └── [middleware.ts](./src/middleware.ts)
-    └── 📁[pages](./src/pages/)
-        └── 📁[api](./src/pages/api/)
-            └── 📁[auth](./src/pages/api/auth/)
-            └── [hello.ts](./src/pages/api/hello.ts)
-        └── 📁[auth](./src/pages/auth/)
-            └── [login.tsx](./src/pages/auth/login.tsx)
-        └── 📁[dashboard](./src/pages/dashboard/)
-            └── [index.tsx](./src/pages/dashboard/index.tsx)
-        └── [index.tsx](./src/pages/index.tsx)
-        └── [_app.tsx](./src/pages/_app.tsx)
-        └── [_document.tsx](./src/pages/_document.tsx)
-    └── 📁[styles](./src/styles/)
-        └── [globals.css](./src/styles/globals.css)
-```
-
 - **Quick Generation**: With a single click, get a Markdown representation of your folder structure.
 - **Attractive Format**: Choose from many designs! The generated structure uses Unicode characters for a clear and aesthetic display.
 - **Seamless Integration**: Integrates directly into the VS Code file explorer context menu.
