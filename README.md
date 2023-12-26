@@ -46,7 +46,7 @@ You can modify it to your liking!
 
 Choose from a lot of predefined designs we have to offer. By default we use "EmojiDashes".
 
-#####list of styles:
+**List of styles:**
 
 - ClassicDashes
 - SparklesDesing

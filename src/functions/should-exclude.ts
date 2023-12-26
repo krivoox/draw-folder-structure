@@ -1,3 +1,3 @@
 export function shouldExclude(name: string, patterns: string[]): boolean {
-  return patterns.some((pattern) => name.includes(pattern));
+  return patterns.some((pattern) => name === pattern);
 }

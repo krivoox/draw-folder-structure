@@ -2,6 +2,18 @@
 
 All notable changes to the "Draw Folder Structure" extension will be documented in this file.
 
+## [1.2.2] - 2023-12-26
+
+### Added
+
+Fix error in shouldExclude function
+
+## [1.2.1] - 2023-11-16
+
+### Added
+
+Fix error in README.md
+
 ## [1.2.0] - 2023-11-10
 
 ### Added
