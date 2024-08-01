@@ -8,7 +8,7 @@ import { Style } from './types/style';
 export function activate(context: vscode.ExtensionContext) {
   let disposable = vscode.commands.registerCommand(
     'extension.generateMarkdownStructure',
-    (folder: vscode.Uri) => {
+    async (folder: vscode.Uri) => {
       const folderPath = folder.fsPath;
       const itemName = path.basename(folderPath);
       const stats = fs.statSync(folderPath);
@@ -26,9 +26,8 @@ export function activate(context: vscode.ExtensionContext) {
 
       if (stats.isDirectory()) {
         markdownStructure += getPrefix(0, style) + itemName + '\n';
-        markdownStructure += generateStructure(
+        markdownStructure += await generateStructure(
           folderPath,
-          1,
           excludePatterns,
           style
         );
