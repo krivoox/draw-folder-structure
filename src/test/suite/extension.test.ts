@@ -5,16 +5,15 @@ import { shouldExclude } from '../../functions/should-exclude';
 import { Style } from '../../types/style';
 
 suite('Extension Test Suite', () => {
-  test('generateStructure should return correct structure for different styles', () => {
+  test('generateStructure should return correct structure for different styles', async () => {
     const testFolderPath = path.resolve(
       __dirname,
       '../../../src/test/suite/testFolder'
     );
     const exclude = ['.git'];
 
-    let structure = generateStructure(
+    let structure = await generateStructure(
       testFolderPath,
-      0,
       exclude,
       Style.ClassicDashes
     );
@@ -25,9 +24,8 @@ suite('Extension Test Suite', () => {
 `;
     assert.strictEqual(structure, expectedStructure);
 
-    structure = generateStructure(
+    structure = await generateStructure(
       testFolderPath,
-      0,
       exclude,
       Style.MinimalistDots
     );
