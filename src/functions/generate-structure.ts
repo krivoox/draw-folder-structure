@@ -1,47 +1,61 @@
-import * as path from 'path';
-import * as vscode from 'vscode';
-import { Style } from '../types/style';
-import { getPrefix } from './get-prefix';
+import * as fs from "fs";
+import * as path from "path";
+import { getPrefix } from "./get-prefix";
+import { Style } from "../types/style";
+import { shouldExclude } from "./should-exclude";
 
-export async function generateStructure(
+export function generateStructure(
   folderPath: string,
+  depth: number,
   excludePatterns: string[],
   style: Style,
   isLast = false
-): Promise<string> {
-  let structure = '';
+): string {
+  let structure = "";
 
-  const globPatterns = `{${excludePatterns.join(',')}}`;
+  const items = fs
+    .readdirSync(folderPath)
+    .filter((item) => {
+      const itemPath = path.join(folderPath, item);
+      return !shouldExclude(itemPath, excludePatterns, folderPath);
+    })
+    .sort((a, b) => {
+      const aPath = path.join(folderPath, a);
+      const bPath = path.join(folderPath, b);
+      const aIsDirectory = fs.lstatSync(aPath).isDirectory();
+      const bIsDirectory = fs.lstatSync(bPath).isDirectory();
+      if (aIsDirectory && !bIsDirectory) return -1;
+      if (!aIsDirectory && bIsDirectory) return 1;
+      return a.localeCompare(b);
+    });
 
-  const files = (
-    await vscode.workspace.findFiles(
-      new vscode.RelativePattern(folderPath, '**/*'),
-      new vscode.RelativePattern(folderPath, globPatterns)
-    )
-  ).sort((a, b) => a.fsPath.localeCompare(b.fsPath));
+  const totalItems = items.length;
 
-  const folders = new Set([folderPath]);
+  items.forEach((item, index) => {
+    const isLastItem = index === totalItems - 1;
+    const fullPath = path.join(folderPath, item);
+    const stats = fs.statSync(fullPath);
 
-  for (const [index, file] of files.entries()) {
-    const isLastItem = isLast && index === files.length - 1;
-    const fullPath = path.parse(file.fsPath).dir;
-    const itemName = path.basename(file.fsPath);
-
-    const currentDepth =
-      fullPath.split(path.sep).length - folderPath.split(path.sep).length;
-
-    if (!folders.has(fullPath)) {
-      folders.add(fullPath);
-
-      const folderName = path.basename(fullPath);
-
+    if (stats.isDirectory()) {
+      const subItems = fs
+        .readdirSync(fullPath)
+        .filter(
+          (subItem) => !shouldExclude(subItem, excludePatterns, folderPath)
+        );
+      const isSubLast = isLastItem && subItems.length === 0;
+      structure += getPrefix(depth, style, false, isSubLast) + item + "\n";
+      structure += generateStructure(
+        fullPath,
+        depth + 1,
+        excludePatterns,
+        style,
+        isLastItem
+      );
+    } else {
       structure +=
-        getPrefix(currentDepth, style, false, isLastItem) + folderName + '\n';
+        getPrefix(depth, style, true, isLastItem && isLast) + item + "\n";
     }
-
-    structure +=
-      getPrefix(currentDepth + 1, style, true, isLastItem) + itemName + '\n';
-  }
+  });
 
   return structure;
 }

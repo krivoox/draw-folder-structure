@@ -2,6 +2,13 @@
 
 All notable changes to the "Draw Folder Structure" extension will be documented in this file.
 
+## [1.3.0] - 2024-08-08
+
+### Added
+
+Flexible Exclusions - Exclude specific files and folders using glob patterns for more precise control over the generated structure.
+Folders and files are sorted in the original order they came from
+
 ## [1.2.2] - 2023-12-26
 
 ### Added
