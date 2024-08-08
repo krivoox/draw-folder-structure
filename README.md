@@ -12,6 +12,7 @@ This extension works with vscode version 1.81.0 or higher
 - **Automatic Formatting**: Newly added automatic backticks wrapping for proper Markdown code formatting.
 - **Clipboard Integration**: Automatically copies the generated structure to the clipboard with user notification for easy pasting.
 - **Enhanced Usability**: Designed for convenience, making folder structure sharing effortless.
+- **Flexible Exclusions**: Exclude specific files and folders using glob patterns for more precise control over the generated structure.
 
 ## Usage
 
@@ -36,9 +37,17 @@ You can customize which folders and files to exclude in the drawing, as well as 
 
 ##### Exclude folders or files as you like
 
-For example: "node_module" (Excluded by default).
+For example: "node_modules" (Excluded by default).
 Just add in your **settings.json** file the line **"draw.folder.structure.exclude"** and it will show you the default excluded folders and files.
-You can modify it to your liking!
+You can modify it to your liking using glob patterns!
+
+**Examples of exclusion patterns:**
+
+- Exclude specific folders: `"**/node_modules", "**/dist"`
+- Exclude specific files: `"**/archivo1.txt", "**/archivo2.js"`
+- Exclude by file extension: `"**/*.log", "**/*.tmp"`
+
+Try to create your own pattern!
 
 ![Custom Setting](./src/assets/screen03.png)
 
