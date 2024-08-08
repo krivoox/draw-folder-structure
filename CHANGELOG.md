@@ -6,8 +6,9 @@ All notable changes to the "Draw Folder Structure" extension will be documented 
 
 ### Added
 
-Flexible Exclusions - Exclude specific files and folders using glob patterns for more precise control over the generated structure.
-Folders and files are sorted in the original order they came from
+- Flexible Exclusions: Exclude specific files and folders using glob patterns for more precise control over the generated structure.
+- Folders and files are sorted in the original order they came from
+- Added functionality to notify of new version
 
 ## [1.2.2] - 2023-12-26
 
