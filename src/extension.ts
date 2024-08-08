@@ -5,7 +5,18 @@ import { getPrefix } from "./functions/get-prefix";
 import { generateStructure } from "./functions/generate-structure";
 import { Style } from "./types/style";
 
+const CURRENT_VERSION = "1.3.0";
+
 export function activate(context: vscode.ExtensionContext) {
+  const previousVersion = context.globalState.get<string>("extensionVersion");
+
+  if (previousVersion !== CURRENT_VERSION) {
+    vscode.window.showInformationMessage(
+      `🎉 New version ${CURRENT_VERSION} available! Check out the new features!`
+    );
+    context.globalState.update("extensionVersion", CURRENT_VERSION);
+  }
+
   let disposable = vscode.commands.registerCommand(
     "extension.generateMarkdownStructure",
     async (folder: vscode.Uri) => {
