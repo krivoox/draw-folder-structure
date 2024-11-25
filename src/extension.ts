@@ -35,12 +35,20 @@ export function activate(context: vscode.ExtensionContext) {
           .getConfiguration('draw.folder.structure')
           .get('style') || Style.EmojiDashes;
 
+      // TODO: Implement this feature in the future (allowRecursion)
+      const allowRecursion: boolean = true; // getConfiguration('draw.folder.structure').get('allowRecursion')
+
+      // TODO: Implement this feature in the future (respectGitignore)
+      const respectGitignore: boolean = false; // getConfiguration('draw.folder.structure').get('respectGitignore')
+
       if (stats.isDirectory()) {
         markdownStructure += getPrefix(0, style) + itemName + '\n';
         markdownStructure += await generateStructure(
           folderPath,
           excludePatterns,
-          style
+          style,
+          allowRecursion,
+          respectGitignore
         );
       } else {
         markdownStructure = getPrefix(0, style, true) + itemName + '\n';
