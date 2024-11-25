@@ -94,10 +94,10 @@
     "@typescript-eslint/parser": "^6.4.1",
     "@vscode/test-electron": "^2.3.4",
     "eslint": "^8.47.0",
-    "glob": "^10.3.3",
     "typescript": "^5.1.6"
   },
   "dependencies": {
-    "minimatch": "^10.0.1"
+    "fast-glob": "^3.3.2",
+    "ignore": "^6.0.2"
   }
 }
