@@ -25,6 +25,7 @@ export async function findFiles(
     cwd: baseDir, // Base directory
     absolute: true, // Return absolute paths
     onlyFiles: false, // Return files and directories
+    dot: true, // Include files starting with a dot
     deep: allowRecursion ? Infinity : 1, // Toggle recursion
     ignore: exclude, // Exclude patterns
   };
