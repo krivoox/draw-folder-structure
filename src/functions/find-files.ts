@@ -1,7 +1,7 @@
 import * as fastGlob from 'fast-glob';
-import { existsSync, readFileSync } from 'fs';
+import { existsSync, readFileSync, statSync } from 'fs';
 import ignore from 'ignore';
-import { join, relative } from 'path';
+import { join, relative, sep } from 'path';
 
 export async function findFiles(
   baseDir: string,
@@ -41,11 +41,32 @@ export async function findFiles(
         })
       : filePaths;
 
-    // Return the list of files
-    return filteredPaths.sort((a, b) => {
-      // Alphabetical order
-      return a.localeCompare(b, undefined, { sensitivity: 'base' });
-    });
+    // Separate base level files from
+    const baseLevelFiles = [];
+    const otherFiles = [];
+    for (const file of filteredPaths) {
+      const relativePath = relative(baseDir, file);
+      const depth = relativePath.split(sep).length - 1;
+      const isFolder = statSync(file).isDirectory();
+
+      if (depth === 0 && !isFolder) {
+        // Add base level files to a separate list
+        baseLevelFiles.push(file);
+      } else {
+        // Add other files to a separate list
+        otherFiles.push(file);
+      }
+    }
+
+    // Sort files: Other files first, then base level files
+    return [
+      ...otherFiles.sort((a, b) =>
+        a.localeCompare(b, undefined, { sensitivity: 'base' })
+      ), // Sort case-insensitively
+      ...baseLevelFiles.sort((a, b) =>
+        a.localeCompare(b, undefined, { sensitivity: 'base' })
+      ), // Sort case-insensitively
+    ];
   } catch (error) {
     console.error('Error while finding files:', error);
     throw error; // Re-throw error for upstream handling
