@@ -1,61 +1,47 @@
-import * as fs from "fs";
-import * as path from "path";
-import { getPrefix } from "./get-prefix";
-import { Style } from "../types/style";
-import { shouldExclude } from "./should-exclude";
+import { statSync } from 'fs';
+import { basename, resolve, sep } from 'path';
+import { Style } from '../types/style';
+import { findFiles } from './find-files';
+import { getPrefix } from './get-prefix';
 
-export function generateStructure(
+export async function generateStructure(
   folderPath: string,
-  depth: number,
   excludePatterns: string[],
   style: Style,
-  isLast = false
-): string {
-  let structure = "";
+  allowRecursion: boolean = true, // Toggle recursive search
+  respectGitignore: boolean = false // Toggle .gitignore usage
+): Promise<string> {
+  let structure = '';
 
-  const items = fs
-    .readdirSync(folderPath)
-    .filter((item) => {
-      const itemPath = path.join(folderPath, item);
-      return !shouldExclude(itemPath, excludePatterns, folderPath);
-    })
-    .sort((a, b) => {
-      const aPath = path.join(folderPath, a);
-      const bPath = path.join(folderPath, b);
-      const aIsDirectory = fs.lstatSync(aPath).isDirectory();
-      const bIsDirectory = fs.lstatSync(bPath).isDirectory();
-      if (aIsDirectory && !bIsDirectory) return -1;
-      if (!aIsDirectory && bIsDirectory) return 1;
-      return a.localeCompare(b);
-    });
+  const items = await findFiles(
+    folderPath, // Base directory
+    ['**/*'], // Include all files
+    excludePatterns, // Exclude patterns
+    allowRecursion, // Toggle recursion
+    respectGitignore // Toggle .gitignore usage
+  );
 
-  const totalItems = items.length;
+  // Iterate over each item and generate the structure
+  for (const [index, item] of items.entries()) {
+    const fullPath = resolve(item); // Ensure full path
+    const isFolder = statSync(fullPath).isDirectory();
+    const isLastItem = index === items.length - 1;
 
-  items.forEach((item, index) => {
-    const isLastItem = index === totalItems - 1;
-    const fullPath = path.join(folderPath, item);
-    const stats = fs.statSync(fullPath);
+    // Calculate the depth of the current item
+    const currentDepth =
+      fullPath.split(sep).length - folderPath.split(sep).length;
 
-    if (stats.isDirectory()) {
-      const subItems = fs
-        .readdirSync(fullPath)
-        .filter(
-          (subItem) => !shouldExclude(subItem, excludePatterns, folderPath)
-        );
-      const isSubLast = isLastItem && subItems.length === 0;
-      structure += getPrefix(depth, style, false, isSubLast) + item + "\n";
-      structure += generateStructure(
-        fullPath,
-        depth + 1,
-        excludePatterns,
-        style,
-        isLastItem
-      );
-    } else {
-      structure +=
-        getPrefix(depth, style, true, isLastItem && isLast) + item + "\n";
-    }
-  });
+    // Get the prefix for the current item
+    const prefix = getPrefix(
+      currentDepth, // Add one level for files
+      style, // Style
+      !isFolder, // Is file
+      isLastItem // Is last item
+    );
+
+    // Add the item to the structure
+    structure += `${prefix}${basename(item)}\n`;
+  }
 
   return structure;
 }
