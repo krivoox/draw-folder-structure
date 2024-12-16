@@ -1,7 +1,7 @@
-import * as fastGlob from 'fast-glob';
-import { existsSync, readFileSync, statSync } from 'fs';
-import ignore from 'ignore';
-import { join, relative, sep } from 'path';
+import * as fastGlob from "fast-glob";
+import { existsSync, readFileSync, statSync } from "fs";
+import ignore, { Ignore } from "ignore";
+import { join, relative, sep } from "path";
 
 export async function findFiles(
   baseDir: string,
@@ -11,12 +11,12 @@ export async function findFiles(
   respectGitignore: boolean = false // Toggle .gitignore usage
 ): Promise<string[]> {
   // If we need to respect .gitignore, we need to load it
-  let gitignore;
+  let gitignore: Ignore | undefined;
   if (respectGitignore) {
-    const gitignorePath = join(baseDir, '.gitignore');
+    const gitignorePath = join(baseDir, ".gitignore");
     // Load .gitignore if it exists
     if (existsSync(gitignorePath)) {
-      gitignore = ignore().add(readFileSync(gitignorePath, 'utf8'));
+      gitignore = ignore().add(readFileSync(gitignorePath, "utf8"));
     }
   }
 
@@ -38,7 +38,7 @@ export async function findFiles(
     const filteredPaths = gitignore
       ? filePaths.filter((filePath) => {
           const relativePath = relative(baseDir, filePath); // Convert to relative paths
-          return !gitignore.ignores(relativePath);
+          return gitignore ? !gitignore.ignores(relativePath) : true;
         })
       : filePaths;
 
@@ -62,14 +62,14 @@ export async function findFiles(
     // Sort files: Other files first, then base level files
     return [
       ...otherFiles.sort((a, b) =>
-        a.localeCompare(b, undefined, { sensitivity: 'base' })
+        a.localeCompare(b, undefined, { sensitivity: "base" })
       ), // Sort case-insensitively
       ...baseLevelFiles.sort((a, b) =>
-        a.localeCompare(b, undefined, { sensitivity: 'base' })
+        a.localeCompare(b, undefined, { sensitivity: "base" })
       ), // Sort case-insensitively
     ];
   } catch (error) {
-    console.error('Error while finding files:', error);
+    console.error("Error while finding files:", error);
     throw error; // Re-throw error for upstream handling
   }
 }
