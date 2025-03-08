@@ -1,7 +1,7 @@
-import * as fastGlob from 'fast-glob';
-import { existsSync, readFileSync, statSync } from 'fs';
-import ignore from 'ignore';
-import { join, relative, sep } from 'path';
+import * as fastGlob from "fast-glob";
+import { existsSync, readFileSync, statSync } from "fs";
+import ignore, { Ignore } from "ignore";
+import { join, relative, sep } from "path";
 
 export async function findFiles(
   baseDir: string,
@@ -15,7 +15,7 @@ export async function findFiles(
   if (respectGitignore) {
     const gitignorePath = join(baseDir, '.gitignore');
     if (existsSync(gitignorePath)) {
-      gitignore = ignore().add(readFileSync(gitignorePath, 'utf8'));
+      gitignore = ignore().add(readFileSync(gitignorePath, "utf8"));
     }
   }
 

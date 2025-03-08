@@ -2,6 +2,16 @@
 
 All notable changes to the "Draw Folder Structure" extension will be documented in this file.
 
+## [1.4.0] - 2024-12-16
+
+### Added
+
+- Dependency Updates: Replaced glob and minimatch with fast-glob and ignore for improved file pattern matching and exclusion.
+- Standardized single quotes and reordered imports in src/extension.ts.
+- Removed should-exclude.ts, now handled by fast-glob and ignore.
+- Added a findFiles function for recursive file searching with .gitignore support.
+- Updated generateStructure to use findFiles and support options like allowRecursion and respectGitignore.
+
 ## [1.3.0] - 2024-08-08
 
 ### Added
