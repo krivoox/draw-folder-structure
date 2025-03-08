@@ -13,33 +13,28 @@ export async function generateStructure(
 ): Promise<string> {
   let structure = '';
 
+  // Retrieve the sorted items using the optimized findFiles function.
   const items = await findFiles(
-    folderPath, // Base directory
-    ['**/*'], // Include all files
-    excludePatterns, // Exclude patterns
-    allowRecursion, // Toggle recursion
-    respectGitignore // Toggle .gitignore usage
+    folderPath,       // Base directory
+    ['**/*'],         // Include all files and directories
+    excludePatterns,  // Exclude patterns
+    allowRecursion,   // Recursive search
+    respectGitignore  // Respect .gitignore if enabled
   );
 
-  // Iterate over each item and generate the structure
+  // Iterate over each sorted item to build the structure.
   for (const [index, item] of items.entries()) {
     const fullPath = resolve(item); // Ensure full path
     const isFolder = statSync(fullPath).isDirectory();
     const isLastItem = index === items.length - 1;
 
-    // Calculate the depth of the current item
-    const currentDepth =
-      fullPath.split(sep).length - folderPath.split(sep).length;
+    // Calculate the depth (number of subdirectories) based on the relative path.
+    const currentDepth = fullPath.split(sep).length - folderPath.split(sep).length;
 
-    // Get the prefix for the current item
-    const prefix = getPrefix(
-      currentDepth, // Add one level for files
-      style, // Style
-      !isFolder, // Is file
-      isLastItem // Is last item
-    );
+    // Get the prefix for the current item based on its depth, style, if it's the last item, and if it's a file.
+    const prefix = getPrefix(currentDepth, style, isLastItem, !isFolder);
 
-    // Add the item to the structure
+    // Append the item (using its basename) to the structure.
     structure += `${prefix}${basename(item)}\n`;
   }
 
