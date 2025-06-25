@@ -33,29 +33,30 @@ _A file with the drawing of the structure will be generated._
 
 ## Customization
 
-You can customize which folders and files to exclude in the drawing, as well as choose from many markdown layouts.
+You can customize the folder structure drawing by excluding specific folders or files, selecting from various layout styles, and fine-tuning the search behavior. This section explains all the available configuration options in detail.
 
-##### Exclude folders or files as you like
+### Exclude Folders and Files
 
-For example: "node_modules" (Excluded by default).
-Just add in your **settings.json** file the line **"draw.folder.structure.exclude"** and it will show you the default excluded folders and files.
-You can modify it to your liking using glob patterns!
+You have full control over which folders and files are included or excluded in the generated structure. For instance, if you want to skip common directories like "node_modules" or "dist," you can set the `draw.folder.structure.exclude` option in your **settings.json**. This configuration accepts glob patterns, allowing you to exclude items based on file names, extensions, or entire directories.
 
 **Examples of exclusion patterns:**
 
-- Exclude specific folders: `"**/node_modules", "**/dist"`
-- Exclude specific files: `"**/archivo1.txt", "**/archivo2.js"`
-- Exclude by file extension: `"**/*.log", "**/*.tmp"`
+- **Exclude specific folders:**
+  `"**/node_modules", "**/dist"`
 
-Try to create your own pattern!
+- **Exclude specific files:**
+  `"**/archivo1.txt", "**/archivo2.js"`
 
-![Custom Setting](./src/assets/screen03.png)
+- **Exclude by file extension:**
+  `"**/*.log", "**/*.tmp"`
 
-#### Choose the design you like best
+_Note:_ The extension comes with a default set of excluded folders and files. You can modify or extend these patterns to suit your project’s needs.
 
-Choose from a lot of predefined designs we have to offer. By default we use "EmojiDashes".
+### Choose the Design You Like Best
 
-**List of styles:**
+The extension offers a variety of predefined styles to render the folder structure. By default, it uses the "EmojiDashes" style, but you can choose from several other designs to match your visual preference.
+
+**Available styles include:**
 
 - ClassicDashes
 - SparklesDesing
@@ -78,7 +79,49 @@ Choose from a lot of predefined designs we have to offer. By default we use "Emo
 - NestedSquares
 - CirclesAndLines
 
-![Custom Setting](./src/assets/cap-style-screen.gif)
+This allows you to personalize the appearance of your Markdown output according to your taste.
+
+### Recursion and .gitignore Settings
+
+In addition to exclusions and style selection, the extension provides two extra settings that control how the file search is performed:
+
+#### allowRecursion
+
+This setting determines whether the search is conducted recursively within the selected folder.
+
+- **`true` (default):**
+  The extension will explore all subdirectories under the base folder, generating a complete and detailed project tree.
+
+- **`false`:**
+  Only the files and folders in the root of the selected directory are included, giving you a shallower structure without delving into subdirectories.
+
+#### respectGitignore
+
+This setting instructs the extension whether to honor the rules defined in your project’s **`.gitignore`** file.
+
+- **`true`:**
+  The extension loads the `.gitignore` file (if it exists) and excludes any files or folders that match the specified patterns. This is useful for omitting dependencies or temporary files that aren’t relevant to the structure view.
+
+- **`false` (default):**
+  All files and folders are included, regardless of what is defined in `.gitignore`.
+
+### Example Configuration in settings.json
+
+Here’s an example of how you can configure all these options in your **settings.json**:
+
+```json
+{
+  "draw.folder.structure.exclude": ["**/node_modules", "**/dist"],
+  "draw.folder.structure.style": "EmojiDashes",
+  "draw.folder.structure.allowRecursion": true,
+  "draw.folder.structure.respectGitignore": false
+}
+```
+
+Adjust these options to suit your needs. For example, if you prefer a less detailed, top-level structure, set `allowRecursion` to `false`. If you want to ignore files specified in your `.gitignore`, enable `respectGitignore` by setting it to `true`.
+
+![Customization Settings](./src/assets/screen03.png)
+![Design Options](./src/assets/cap-style-screen.gif)
 
 ## Installation and Usage
 
@@ -92,7 +135,7 @@ Choose from a lot of predefined designs we have to offer. By default we use "Emo
 
 For support queries or to contribute to this project, please visit our GitHub repository or contact us at [jm.krivocapich@gmail.com]('').
 
-#### Contributions
+## Contributions
 
 Contributions are welcome. If you encounter any problems or have any suggestions, please open an issue in the GitHub repository. We also invite you to read [How to contribute](./CONTRIBUTING.md)
 

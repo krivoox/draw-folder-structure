@@ -28,18 +28,22 @@ export function activate(context: vscode.ExtensionContext) {
       const excludePatterns: string[] =
         vscode.workspace
           .getConfiguration('draw.folder.structure')
-          .get('exclude') || [];
+          .get<string[]>('exclude', []);
 
       const style: Style =
         vscode.workspace
           .getConfiguration('draw.folder.structure')
-          .get('style') || Style.EmojiDashes;
+          .get<Style>('style', Style.EmojiDashes);
 
-      // TODO: Implement this feature in the future (allowRecursion)
-      const allowRecursion: boolean = true; // getConfiguration('draw.folder.structure').get('allowRecursion')
+      const allowRecursion: boolean =
+        vscode.workspace
+          .getConfiguration('draw.folder.structure')
+          .get<boolean>('allowRecursion', true);
 
-      // TODO: Implement this feature in the future (respectGitignore)
-      const respectGitignore: boolean = false; // getConfiguration('draw.folder.structure').get('respectGitignore')
+      const respectGitignore: boolean =
+        vscode.workspace
+          .getConfiguration('draw.folder.structure')
+          .get<boolean>('respectGitignore', false);
 
       if (stats.isDirectory()) {
         markdownStructure += getPrefix(0, style) + itemName + '\n';
@@ -74,4 +78,4 @@ export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(disposable);
 }
 
-export function deactivate() {}
+export function deactivate() { }
