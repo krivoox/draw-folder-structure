@@ -1,0 +1,33 @@
+name: Build & Publish VS Code Extension
+
+on:
+  push:
+    branches:
+      - main # o 'master'
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "21"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Compile extension
+        run: npm run build # o 'npm run compile'
+
+      - name: Package VS Code Extension
+        run: npx vsce package # genera el .vsix
+
+      - name: Publish to Marketplace
+        env:
+          VSCODE_MARKETPLACE: ${{ secrets.VSCODE_MARKETPLACE }}
+        run: npx vsce publish --pat $VSCODE_MARKETPLACE
