@@ -22,7 +22,7 @@ jobs:
         run: npm ci
 
       - name: Compile extension
-        run: npm run build # o 'npm run compile'
+        run: npm run compile
 
       - name: Package VS Code Extension
         run: npx vsce package # genera el .vsix
