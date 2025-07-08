@@ -131,13 +131,34 @@ Adjust these options to suit your needs. For example, if you prefer a less detai
 4. The Markdown representation of the folder structure is automatically copied to your clipboard.
 5. Paste it into your Markdown file or documentation as needed.
 
+## Telemetry and Privacy
+
+This extension collects anonymous performance data to help improve functionality.
+
+### What is collected?
+
+- Performance and usage metrics (without personal data)
+- Technical error information to improve stability
+- Feature usage statistics
+
+### What is NOT collected?
+
+- File content or specific paths
+- Personally identifiable information
+- Sensitive project data
+
+All data is anonymous and is used solely to improve the extension. For more details about privacy, see [AZURE_INSIGHTS_SETUP.md](./AZURE_INSIGHTS_SETUP.md).
+
 ## Support and Contribution
 
 For support queries or to contribute to this project, please visit our GitHub repository or contact us at [jm.krivocapich@gmail.com]('').
 
 ## Contributions
 
-Contributions are welcome. If you encounter any problems or have any suggestions, please open an issue in the GitHub repository. We also invite you to read [How to contribute](./CONTRIBUTING.md)
+Contributions are welcome. If you encounter any problems or have any suggestions, please open an issue in the GitHub repository. We also invite you to read our contribution guidelines:
+
+- [How to contribute (English)](./CONTRIBUTING_EN.md)
+- [Cómo contribuir (Español)](./CONTRIBUTING.md)
 
 ## Made by
 
