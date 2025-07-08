@@ -2,6 +2,28 @@
 
 All notable changes to the "Draw Folder Structure" extension will be documented in this file.
 
+## [1.4.4] - 2024-12-19
+
+### Added
+
+- **Telemetry System**: Comprehensive analytics implementation using Azure Application Insights
+  - Extension activation/deactivation tracking with version information
+  - Command usage metrics including performance data (duration, output length)
+  - Configuration tracking (style preferences, recursion settings, gitignore respect)
+  - Error and exception handling with detailed context
+  - System information collection (VS Code version, language, platform, architecture)
+  - Privacy-focused anonymous data collection for extension improvement
+- **Internationalization**: Translated "Telemetry and Privacy" section to English in README.md
+- **Documentation**: Created CONTRIBUTING_EN.md - English version of the contributing guidelines
+- **Documentation**: Updated README.md to include links to both English and Spanish versions of contributing guidelines
+- **Bilingual Support**: Enhanced project accessibility for English-speaking contributors while maintaining Spanish documentation
+
+### Changed
+
+- README.md now provides bilingual documentation options for contributors
+- Improved international collaboration support with dual-language contribution guides
+- Enhanced extension with performance monitoring and usage analytics capabilities
+
 ## [1.4.0] - 2024-12-16
 
 ### Added
