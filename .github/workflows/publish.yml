@@ -20,7 +20,7 @@ jobs:
 
       - name: Create .env file
         run: |
-          echo "TELEMETRY_CONNECTION_STRING=${{ secrets.AZURE_TELEMETRY_CONNECTION_STRING }}" > .env
+          echo "AZURE_INSIGHTS_CONNECTION_STRING=${{ secrets.AZURE_TELEMETRY_CONNECTION_STRING }}" > .env
         env:
           AZURE_TELEMETRY_CONNECTION_STRING: ${{ secrets.AZURE_TELEMETRY_CONNECTION_STRING }}
 
