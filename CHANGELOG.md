@@ -2,6 +2,12 @@
 
 All notable changes to the "Draw Folder Structure" extension will be documented in this file.
 
+## [1.4.6] - 2026-01-19
+
+### Fix
+
+correct default exclude patterns for .git and .next
+
 ## [1.4.4] - 2024-12-19
 
 ### Added
