@@ -45,7 +45,8 @@
             "**/.git",
             "**/dist",
             "**/.next",
-            "**/out"
+            "**/out",
+            "**/target"
           ],
           "description": "File and folder patterns to exclude when generating the Markdown structure."
         },
