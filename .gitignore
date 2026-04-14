@@ -5,3 +5,9 @@ node_modules
 *.vsix
 .DS_Store
 .env
+.agents
+.vscode
+.claude
+.codebuddy
+.continue
+.junie

@@ -75,6 +75,21 @@
             "GalacticDesign"
           ],
           "description": "Drawing style for folder structure."
+        },
+        "draw.folder.structure.allowRecursion": {
+          "type": "boolean",
+          "default": true,
+          "description": "Allow recursive exploration of subdirectories."
+        },
+        "draw.folder.structure.respectGitignore": {
+          "type": "boolean",
+          "default": false,
+          "description": "Respect .gitignore file patterns when generating structure."
+        },
+        "draw.folder.structure.telemetry.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Help improve the extension by sending anonymous usage data."
         }
       }
     }
@@ -98,6 +113,7 @@
   },
   "dependencies": {
     "fast-glob": "^3.3.2",
-    "ignore": "^6.0.2"
+    "ignore": "^6.0.2",
+    "applicationinsights": "^2.9.5"
   }
 }

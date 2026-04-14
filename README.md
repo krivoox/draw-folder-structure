@@ -50,7 +50,7 @@ You have full control over which folders and files are included or excluded in t
 - **Exclude by file extension:**
   `"**/*.log", "**/*.tmp"`
 
-_Note:_ The extension comes with a default set of excluded folders and files. You can modify or extend these patterns to suit your project’s needs.
+_Note:_ The extension comes with a default set of excluded folders and files. You can modify or extend these patterns to suit your project's needs.
 
 ### Choose the Design You Like Best
 
@@ -97,17 +97,17 @@ This setting determines whether the search is conducted recursively within the s
 
 #### respectGitignore
 
-This setting instructs the extension whether to honor the rules defined in your project’s **`.gitignore`** file.
+This setting instructs the extension whether to honor the rules defined in your project's **`.gitignore`** file.
 
 - **`true`:**
-  The extension loads the `.gitignore` file (if it exists) and excludes any files or folders that match the specified patterns. This is useful for omitting dependencies or temporary files that aren’t relevant to the structure view.
+  The extension loads the `.gitignore` file (if it exists) and excludes any files or folders that match the specified patterns. This is useful for omitting dependencies or temporary files that aren't relevant to the structure view.
 
 - **`false` (default):**
   All files and folders are included, regardless of what is defined in `.gitignore`.
 
 ### Example Configuration in settings.json
 
-Here’s an example of how you can configure all these options in your **settings.json**:
+Here's an example of how you can configure all these options in your **settings.json**:
 
 ```json
 {
@@ -139,6 +139,16 @@ For support queries or to contribute to this project, please visit our GitHub re
 
 Contributions are welcome. If you encounter any problems or have any suggestions, please open an issue in the GitHub repository. We also invite you to read [How to contribute](./CONTRIBUTING.md)
 
+## V2 Architecture Context for Agents
+
+The V2 redesign documentation is available in `docs/v2` and is intended to guide both human contributors and coding agents with a modular, extensible architecture approach.
+
+- [Architecture V2](./docs/v2/architecture.md)
+- [Remote Notifications V2](./docs/v2/remote-notifications.md)
+- [Monetization: Donations](./docs/v2/monetization-donations.md)
+- [Agent Context](./docs/v2/agent-context.md)
+- [Deprecations (Telemetry Removal)](./docs/v2/deprecations.md)
+
 ## Made by
 
 **Krivoox**
@@ -148,3 +158,9 @@ Contributions are welcome. If you encounter any problems or have any suggestions
 ## License
 
 [MIT](./LICENSE.md)
+
+---
+
+### Privacy Notice
+
+The V2 direction of this project removes telemetry from the architecture scope and prioritizes user-controlled, non-intrusive messaging patterns.
